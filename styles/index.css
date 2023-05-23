@@ -13,6 +13,7 @@
 
 body {
   font-family: "Inter", sans-serif;
+  background-color: #ced4da;
 }
 
 .emoji-finder__header {
@@ -55,7 +56,6 @@ body {
   right: 0;
 }
 .emoji-finder__main {
-  background-color: #ced4da;
   height: calc(100vh - 300px);
   padding-top: 80px;
 }

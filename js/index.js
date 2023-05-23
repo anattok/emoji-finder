@@ -3,6 +3,9 @@ import { emoji } from "./emoji.js";
 let wrap = document.querySelector(".emoji-finder__wrap");
 const input = document.querySelector(".emoji-finder__find");
 
+const uniqKeywordsArr = deleteRepeatsKeywords(emoji);
+console.log(uniqKeywordsArr);
+
 function makeCard(item) {
   let card = document.createElement("div");
   card.classList.add("emoji-card");
@@ -27,24 +30,21 @@ function makeCard(item) {
 }
 
 //выводит массив со всемми карточками
-function renderCart(arr) {
-  arr.forEach((item) => makeCard(deleteRepeats(item)));
-}
+// function renderCart(arr) {
+//   arr.forEach((item) => makeCard(deleteRepeats(item)));
+// }
 
 renderCart(emoji);
 
 //удаляет дубли
-function deleteRepeats(card) {
-  const arrKeys = card.keywords.split(" ");
-
-  const arrKeysWithotDublucate = arrKeys.filter((item, i) => {
-    return arrKeys.indexOf(item) === i;
+function deleteRepeatsKeywords(arr) {
+  return arr.map((obj) => {
+    console.log(obj.keywords);
+    obj.keywords
+      .split(" ")
+      .filter((item, i, array) => array.indexOf(item) === i)
+      .join("");
   });
-
-  const newArr = arrKeysWithotDublucate.join(" ");
-  card.keywords = newArr;
-  
-  return card;
 }
 
 input.addEventListener("input", () => {
