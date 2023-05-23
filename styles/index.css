@@ -16,12 +16,12 @@ body {
   background-color: #ced4da;
 }
 
-.emoji-finder__header {
+.header {
   background: linear-gradient(92.33deg, #087990 0.12%, #055160 100%);
   border: 1px solid #ced4da;
   position: relative;
 }
-.emoji-finder__title {
+.header__title {
   margin-top: 68px;
   margin-bottom: 4px;
   font-weight: 700;
@@ -30,7 +30,7 @@ body {
   color: #cff4fc;
   text-align: center;
 }
-.emoji-finder__text {
+.header__text {
   font-weight: 400;
   font-size: 21px;
   line-height: 36px;
@@ -38,7 +38,7 @@ body {
   text-align: center;
   margin-bottom: 100px;
 }
-.emoji-finder__find {
+.header__input {
   width: 820px;
   height: 64px;
   background: #ffffff;
@@ -55,25 +55,24 @@ body {
   left: 0px;
   right: 0;
 }
-.emoji-finder__main {
-  height: calc(100vh - 300px);
-  padding-top: 80px;
-}
-.emoji-finder__wrap {
+
+.main {
   display: grid;
   grid-template-columns: repeat(3, 316px);
   grid-column-gap: 19px;
   grid-row-gap: 22px;
-  margin-bottom: 49px;
+  padding-top: 79px;
+  padding-bottom: 50px;
 }
-.emoji-finder__line {
+
+.footer__line {
   display: block;
   width: 100%;
   height: 1px;
   background: #ccc;
   margin-bottom: 50px;
 }
-.emoji-finder__copy {
+.footer__copy {
   display: block;
   font-weight: 400;
   font-size: 16px;
@@ -114,38 +113,38 @@ body {
 }
 
 @media (max-width: 1020px) {
-  .emoji-finder__title {
+  .header__title {
     margin-top: 48px;
     font-size: 54px;
   }
-  .emoji-finder__text {
+  .header__text {
     font-size: 16px;
     margin-bottom: 70px;
   }
-  .emoji-finder__wrap {
-    grid-template-columns: repeat(2, 316px);
-    justify-content: center;
-  }
-  .emoji-finder__find {
+  .header__input {
     width: 520px;
     height: 64px;
   }
+  .main {
+    grid-template-columns: repeat(2, 316px);
+    justify-content: center;
+  }
 }
 @media (max-width: 680px) {
-  .emoji-finder__title {
+  .header__title {
     margin-top: 28px;
     font-size: 32px;
   }
-  .emoji-finder__text {
+  .header__text {
     font-size: 16px;
     margin-bottom: 30px;
   }
-  .emoji-finder__wrap {
-    grid-template-columns: repeat(1, 316px);
-  }
-  .emoji-finder__find {
+  .header__input {
     width: 100%;
     height: 44px;
     font-size: 16px;
+  }
+  .main {
+    grid-template-columns: repeat(1, 316px);
   }
 }/*# sourceMappingURL=index.css.map */

@@ -1,10 +1,10 @@
 import { emoji } from "./emoji.js";
 
-let wrap = document.querySelector(".emoji-finder__wrap");
+let wrap = document.querySelector(".main");
 const input = document.querySelector(".emoji-finder__find");
 
 const uniqKeywordsArr = deleteRepeatsKeywords(emoji);
-console.log(uniqKeywordsArr);
+// console.log(uniqKeywordsArr);
 
 //создаем карточку
 function makeCard(item) {
