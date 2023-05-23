@@ -6,6 +6,7 @@ const input = document.querySelector(".emoji-finder__find");
 const uniqKeywordsArr = deleteRepeatsKeywords(emoji);
 console.log(uniqKeywordsArr);
 
+//создаем карточку
 function makeCard(item) {
   let card = document.createElement("div");
   card.classList.add("emoji-card");
@@ -29,33 +30,34 @@ function makeCard(item) {
   card.append(divKeywords);
 }
 
-//выводит массив со всемми карточками
-// function renderCart(arr) {
-//   arr.forEach((item) => makeCard(deleteRepeats(item)));
-// }
+// выводит массив со всеми карточками
+function renderCart(arr) {
+  arr.forEach((item) => makeCard(item));
+}
 
-renderCart(emoji);
+renderCart(uniqKeywordsArr);
 
 //удаляет дубли
 function deleteRepeatsKeywords(arr) {
   return arr.map((obj) => {
-    console.log(obj.keywords);
-    obj.keywords
-      .split(" ")
-      .filter((item, i, array) => array.indexOf(item) === i)
-      .join("");
+    const arrKeys = obj.keywords.split(" ");
+    const keysUniq = [...new Set(arrKeys)].join(" ");
+    obj.keywords = keysUniq;
+    return obj;
   });
 }
 
 input.addEventListener("input", () => {
   wrap.innerHTML = "";
-  renderCart(findEmoji(emoji, input.value));
+  renderCart(findEmoji(emoji, input.value.toLowerCase()));
 });
 
 //функция поиска по строке
 function findEmoji(arr, value) {
   const newArr = arr.filter(
-    (obj) => obj.title.includes(value) || obj.keywords.includes(value)
+    (obj) =>
+      obj.title.toLowerCase().includes(value) ||
+      obj.keywords.toLowerCase().includes(value)
   );
 
   return newArr;
