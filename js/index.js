@@ -1,7 +1,7 @@
 import { emoji } from "./emoji.js";
 
 let wrap = document.querySelector(".main");
-const input = document.querySelector(".emoji-finder__find");
+const input = document.querySelector(".header__input");
 
 const uniqKeywordsArr = deleteRepeatsKeywords(emoji);
 // console.log(uniqKeywordsArr);
@@ -50,6 +50,7 @@ function deleteRepeatsKeywords(arr) {
 input.addEventListener("input", () => {
   wrap.innerHTML = "";
   renderCart(findEmoji(emoji, input.value.toLowerCase()));
+  console.log(input.value);
 });
 
 //функция поиска по строке
