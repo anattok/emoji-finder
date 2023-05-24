@@ -112,6 +112,10 @@ body {
   color: #3f444a;
 }
 
+.emoji-card_hidden {
+  display: none;
+}
+
 @media (max-width: 1020px) {
   .header__title {
     margin-top: 48px;
