@@ -5,6 +5,10 @@ const input = document.querySelector(".header__input");
 
 const uniqKeywordsArr = deleteRepeatsKeywords(emoji);
 
+renderCarts(uniqKeywordsArr);
+
+const cards = document.querySelectorAll(".emoji-card");
+
 //создаем карточку
 function makeCard(item) {
   let card = document.createElement("div");
@@ -40,74 +44,71 @@ function deleteRepeatsKeywords(arr) {
 }
 
 // выводит массив со всеми карточками
-function renderCart(arr) {
+function renderCarts(arr) {
   arr.forEach((item) => makeCard(item));
 }
 
-renderCart(uniqKeywordsArr);
-  const cards = document.querySelectorAll(".emoji-card");
 
 input.addEventListener("input", () => {
+  //  wrap.innerHTML = "";
   let inputValue = input.value.toLowerCase().trim();
-  // wrap.innerHTML = "";
   filterEmoji(inputValue, cards);
+
+  // renderCarts(filterEmoji(uniqKeywordsArr, inputValue));
+
 });
 
 //функция поиска по строке
-function filterEmoji(value, cards) {
-  wrap.innerHTML = "";
+//работа с NodeList
 
-  // console.log(cards.length);
+function filterEmoji(value, cards) {
 
   cards.forEach((card) => {
     let titleText = card
       .querySelector(".emoji-card__title")
-      .innerText.toLowerCase();
+      .innerHTML.toLowerCase();
     let keysText = card
       .querySelector(".emoji-card__keywords")
-      .innerText.toLowerCase();
+      .innerHTML.toLowerCase();
     
-    if (!titleText.includes(value) || !keysText.includes(value)) {
+    if (!titleText.includes(value) && !keysText.includes(value)) {
       card.classList.add("emoji-card_hidden");
       
-    } else {
+    }else {
       card.classList.remove("emoji-card_hidden");
     }
-      // !titleText.includes(value) || !keysText.includes(value)
-      //   ? (card.style.display = "none")
-      //   : (card.style.display = "block");
-
-    //   console.log(titleText);
-    // console.log(cards.length);
-
-    wrap.innerHTML = cards;
   });
-
-  // arr = Array.from(arr);
-  // let a = arr.filter((card) => {
-  //   let title = card.querySelector(".emoji-card__title");
-  //   let keys = card.querySelector(".emoji-card__keywords");
-  //   console.dir(title.innerText);
-  //   !title.innerText.toLowerCase().includes(value) ||
-  //   !keys.innerText.toLowerCase().includes(value)
-  //     ? (card.hidden = true)
-  //     : (card.hidden = false);
-  // });
-  // return a;
 }
 
-// const cards = document.querySelectorAll(".emoji-card");
-//  console.log(cards)
 
-// // cards.((card) => {
-// //   // const title = card.querySelector("emoji-card__title");
-// //   // const keys = card.querySelector(".emoji-card__keywords");
 
-// //   // // console.log(title.innerText)
 
-// //   // !title.innerText.toLowerCase().includes(value) ||
-// //   // !keys.innerText.toLowerCase().includes(value)
-// //   //   ? (card.hidden = true)
-// //   //   : card;
-// //   console.log(card)
-// // })
+//функция поиска по строке
+//работа с массивом
+
+// function filterEmoji(arr, value) {
+
+
+// // let time = new Date();
+// // const start = time.getTime();
+// // console.log(start);
+
+  
+//   let newArr =  arr.filter(
+//     (obj) =>
+//       obj.title.toLowerCase().includes(value) ||
+//       obj.keywords.toLowerCase().includes(value)
+//   );
+
+
+//   // const end = time.getTime();
+//   // console.log(end);
+
+
+//   return newArr
+ 
+//}
+
+
+
+
