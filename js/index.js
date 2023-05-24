@@ -50,35 +50,39 @@ function renderCarts(arr) {
 
 
 input.addEventListener("input", () => {
-  //  wrap.innerHTML = "";
+  wrap.innerHTML = "";
   let inputValue = input.value.toLowerCase().trim();
-  filterEmoji(inputValue, cards);
+  
+  const start = new Date().getTime();
 
-  // renderCarts(filterEmoji(uniqKeywordsArr, inputValue));
+  // filterEmoji(inputValue, cards);
+  renderCarts(filterEmoji(uniqKeywordsArr, inputValue));
 
+  const end = new Date().getTime();
+  console.log(`SecondWay: ${end - start}ms`);
 });
 
 //функция поиска по строке
 //работа с NodeList
 
-function filterEmoji(value, cards) {
+// function filterEmoji(value, cards) {
 
-  cards.forEach((card) => {
-    let titleText = card
-      .querySelector(".emoji-card__title")
-      .innerHTML.toLowerCase();
-    let keysText = card
-      .querySelector(".emoji-card__keywords")
-      .innerHTML.toLowerCase();
+//   cards.forEach((card) => {
+//     let titleText = card
+//       .querySelector(".emoji-card__title")
+//       .innerHTML.toLowerCase();
+//     let keysText = card
+//       .querySelector(".emoji-card__keywords")
+//       .innerHTML.toLowerCase();
     
-    if (!titleText.includes(value) && !keysText.includes(value)) {
-      card.classList.add("emoji-card_hidden");
+//     if (!titleText.includes(value) && !keysText.includes(value)) {
+//       card.classList.add("emoji-card_hidden");
       
-    }else {
-      card.classList.remove("emoji-card_hidden");
-    }
-  });
-}
+//     }else {
+//       card.classList.remove("emoji-card_hidden");
+//     }
+//   });
+// }
 
 
 
@@ -86,28 +90,15 @@ function filterEmoji(value, cards) {
 //функция поиска по строке
 //работа с массивом
 
-// function filterEmoji(arr, value) {
+function filterEmoji(arr, value) {
+  let newArr =  arr.filter(
+    (obj) =>
+      obj.title.toLowerCase().includes(value) ||
+      obj.keywords.toLowerCase().includes(value)
+  );
 
-
-// // let time = new Date();
-// // const start = time.getTime();
-// // console.log(start);
-
-  
-//   let newArr =  arr.filter(
-//     (obj) =>
-//       obj.title.toLowerCase().includes(value) ||
-//       obj.keywords.toLowerCase().includes(value)
-//   );
-
-
-//   // const end = time.getTime();
-//   // console.log(end);
-
-
-//   return newArr
- 
-//}
+  return newArr
+}
 
 
 
